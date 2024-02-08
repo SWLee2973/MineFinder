@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import "./Form.module.css";
-import { START_GAME, TableContext } from "../../MineFinder";
+import { TableContext } from "../../MineFinder";
+import { START_GAME } from "../../lib/reducer";
 
 function Form() {
   const [row, setRow] = useState<number>(10);
@@ -18,7 +19,7 @@ function Form() {
     setMine(parseInt(e.target.value));
   };
 
-  const onClickBtn = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const onClickBtn = (/*e: React.MouseEvent<HTMLButtonElement>*/) => {
     dispatch({ type: START_GAME, row, cell, mine });
   };
 

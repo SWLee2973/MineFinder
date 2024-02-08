@@ -8,7 +8,9 @@ function Table() {
   const { tableData } = useContext(TableContext);
 
   return (
-    <table>
+    <table style={{
+      borderCollapse: 'collapse'
+    }}>
       {Array(tableData.length).fill(1).map((_, i) => <Tr key={i} rowIndex={i} />)}
     </table>
   )
