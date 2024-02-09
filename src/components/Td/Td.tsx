@@ -1,8 +1,8 @@
-import { useCallback, useContext } from "react";
+import { memo, useCallback, useContext } from "react";
 // import classes from "./Td.module.css";
 import { TableContext } from "../../MineFinder";
 import {
-  CLICKED_MINE,
+  CLICK_MINE,
   CODE,
   FLAG_CELL,
   NORMALIZE_CELL,
@@ -15,6 +15,7 @@ const getTdStyle = (code: number) => {
     case CODE.NORMAL:
       return {
         background: "#444",
+        border: '1px solid white',
       };
     case CODE.OPENED:
     case CODE.CLICKED_MINE:
@@ -57,7 +58,7 @@ const getTdText = (code: number) => {
     case CODE.QUESTION_MINE:
       return "";
     default:
-      return "";
+      return code || '';
   }
 };
 
@@ -78,7 +79,7 @@ function Td({ rowIndex, cellIndex }: { rowIndex: number; cellIndex: number }) {
         dispatch({ type: OPEN_CELL, row: rowIndex, cell: cellIndex });
         return;
       case CODE.MINE:
-        dispatch({ type: CLICKED_MINE, row: rowIndex, cell: cellIndex });
+        dispatch({ type: CLICK_MINE, row: rowIndex, cell: cellIndex });
         return;
       default:
         return;
@@ -117,7 +118,7 @@ function Td({ rowIndex, cellIndex }: { rowIndex: number; cellIndex: number }) {
       style={{
         width: '32px',
         height: '32px',
-        border: '1px solid white',
+        border: '1px solid #444',
         textAlign: 'center',
         ...getTdStyle(tableData[rowIndex][cellIndex])
       }}
@@ -127,4 +128,4 @@ function Td({ rowIndex, cellIndex }: { rowIndex: number; cellIndex: number }) {
   );
 }
 
-export default Td;
+export default memo(Td);

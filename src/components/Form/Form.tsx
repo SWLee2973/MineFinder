@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, memo } from "react";
 import "./Form.module.css";
 import { TableContext } from "../../MineFinder";
 import { START_GAME } from "../../lib/reducer";
@@ -48,4 +48,4 @@ function Form() {
   );
 }
 
-export default Form;
+export default memo(Form);

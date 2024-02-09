@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { memo, useContext } from 'react'
 import './Table.module.css'
 import { TableContext } from '../../MineFinder'
 import Tr from '../Tr/Tr';
@@ -16,4 +16,4 @@ function Table() {
   )
 }
 
-export default Table
+export default memo(Table)

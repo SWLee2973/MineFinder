@@ -11,9 +11,16 @@ export type GAME_CODE = {
 
 export type STATE = {
   tableData: Array<number>;
+  data: {
+    row: number,
+    cell: number,
+    mine: number,
+  };
   timer: number;
   result: string;
   halted: boolean;
+  openedCount: number;
+  dispatch?: (params:object) => void
 }
 
 export type ACTION =
